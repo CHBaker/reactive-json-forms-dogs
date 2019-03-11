@@ -1,0 +1,103 @@
+p {
+  font-family: Lato;
+}
+
+.header {
+  display: flex;
+  height: 67px;
+  background: red;
+  align-items: center;
+
+}
+
+.menu-item  {
+  flex: auto;
+}
+
+.menu {
+  padding-left: 35px;
+  font-size: 28px;
+  padding-bottom: 6px;
+  color: white;
+}
+
+.left-pain {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.header-title {
+  text-align: center;
+  font-size: 42px;
+  color: white;
+}
+
+.logo {
+    text-align: right;
+    padding-right: 35px;
+    padding-top: 6px;
+    font-size: 42px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 400px;
+}
+
+.title {
+  color: white;
+  padding: 6px 10px;
+  background: #ff00004d;
+  border-radius: 5px;
+  font-size: 22px;
+}
+
+.text-block {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+p {
+  color: white;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-block {
+    display: flex;
+    width: 40%;
+    padding: 15px;
+    border-radius: 5px;
+    height: 218px;
+    background: #ff0000;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+button {
+    border-radius: 3px;
+    border: 2px solid black;
+    background: grey;
+    color: white;
+    cursor: pointer;
+}

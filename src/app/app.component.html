@@ -1,20 +1,96 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="header">
+    <div class="menu menu-item">
+        &#9776;
+    </div>
+    <div class="header-title menu-item">
+        DD for Dogs
+    </div>
+    <div class="logo menu-item">
+        🐾
+    </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
+    <div class="left-pain">
+        <div class="title-container">
+            <div class="title">
+                Schedule My Dog Delivery
+            </div>
+        </div>
+        <div class="text-block">
+            <p>
+                It's been a great adventure with your dog, now it's time to send
+                them home! <br /><br />
+                Let us know which dog needs a DD, who will be there for the
+                delivery, and what day you want them dropped off.<br /><br />
+                We will make sure there is no "Dog Driving" and that they get home
+                safe!
+            </p>
+        </div>
+    </div>
+    <div
+        *ngIf="_formReady"
+        class="form-block"
+    >
+        <form
+            [formGroup]="_form"
+            (ngSubmit)="submitForm(_form)"
+        >
+            <div class="row">
+                <!-- dog control -->
+                <div class="co">
+                    <select formControlName="dog">
+                        <option value="default" class="hidden-option" disabled>
+                            Dog for Pickup
+                        </option>
+                        <option
+                            *ngFor="let dog of backendPayload.dogs"
+                            [value]="JSON.stringify(dog)"
+                        >
+                            {{ dog?.name }}
+                        </option>
+                    </select>
+                </div>
 
+                <!-- person at dropoff -->
+                <div class="col">
+                    <select formControlName="dropoffPersonName">
+                        <option value="default" class="hidden-option" disabled>
+                            Authorized Receivers
+                        </option>
+                        <option
+                            *ngFor="let name of backendPayload.dropoffPersonNames"
+                            [value]="name"
+                        >
+                            {{ name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <span class="date-label">
+                        Dropoff Date:
+                    </span>
+                </div>
+
+                <!-- dropoff date -->
+                <div class="col">
+                    <input
+                        formControlName="dropoffDate"
+                        type="date"
+                    />
+                </div>
+            </div>
+
+            <div class="row center">
+                <!-- submit -->
+                <div class="col">
+                    <button [disabled]="_form.invalid" type="submit">
+                        Deliver My Dog
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
